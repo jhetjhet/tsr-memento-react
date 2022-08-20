@@ -28,8 +28,8 @@ export const createRefreshTokenInterceptor = () => {
     }, function(error) {
 
         axios.interceptors.response.eject(interceptor);
-
-        if(error.response.status !== 401)
+        
+        if(error.response.status !== 400 && error.response.status !== 401)
             return Promise.reject(error);
 
         return refresh().then((newAccessToken) => {
@@ -39,6 +39,18 @@ export const createRefreshTokenInterceptor = () => {
         }).catch((err) => {
             return Promise.reject(err);
         });
+    });
+}
+
+const register = (data) => {
+    let url = new URL('register/', AUTH_BASE_URL).href;
+    return new Promise(async function(resolve, reject) {
+        try {
+            let response = await axios.post(url, data);
+            resolve(response);
+        } catch (error) {
+            reject(error.response);
+        }
     });
 }
 
@@ -81,7 +93,6 @@ const logout = () => {
 const verify = () => {
     let url = new URL('verify/', AUTH_BASE_URL).href;
     
-    
     function _verify(token) {
         return axios.post(url, {
             token,
@@ -93,7 +104,7 @@ const verify = () => {
             let resp = await _verify(Cookies.get(process.env.REACT_APP_ACCESS_TOKEN_COOKIE_NAME));
             return resolve(resp);
         } catch (error) {
-            if(error.response.status === 401){
+            if(error.response.status === 400 || error.response.status === 401){
                 try {
                     let newAccessToken = await refresh();
                     let resp = await _verify(newAccessToken);
@@ -108,10 +119,18 @@ const verify = () => {
     });
 }
 
+const retrieve = () => {
+    let url = new URL('user/', AUTH_BASE_URL).href;
+
+    return fetch('get', url);
+}
+
 const authFetch = {
+    register,
     login,
     logout,
     verify,
+    retrieve,
 }
 
 export default authFetch;

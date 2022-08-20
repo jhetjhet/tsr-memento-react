@@ -35,6 +35,7 @@ export const ROUTER_PAGE_ENDPOINTS = {
     ENTRY_DETAIL_PAGE: 'entry_detail_page',
     CREATE_ENTRY_PAGE: 'create_entry_page',
     LOGIN_PAGE: 'login_page',
+    REGISTER_PAGE: 'register_page',
 }
 
 export const apiURLBuilder = new UrlBuilder({
@@ -56,6 +57,7 @@ export const routePageUrlBuilder = new UrlBuilder({
     [ROUTER_PAGE_ENDPOINTS.ENTRY_DETAIL_PAGE]: '/records/detail/:record_id/entries/detail/:entry_id/',
     [ROUTER_PAGE_ENDPOINTS.CREATE_ENTRY_PAGE]: '/records/detail/:record_id/entries/detail/',
     [ROUTER_PAGE_ENDPOINTS.LOGIN_PAGE]: '/login/',
+    [ROUTER_PAGE_ENDPOINTS.REGISTER_PAGE]: '/register/',
 }, { baseURL: '/' });
 
 export function getBuildUrlByEndPoints(urlBuilder, endpoint, namedParams={}){

@@ -14,7 +14,6 @@ import {
 } from "../../../utils";
 
 const RECORD_MAIN_CONFIG = {
-    to: 'temp_user',
     name: '',
     description: '',
 }

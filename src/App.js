@@ -9,6 +9,7 @@ import LoginPage from "./pages/login";
 import { VerifyToken } from "./provider/authentication";
 import Page404 from "./pages/page404";
 import Response404Listener from "./provider/notfound";
+import RegisterPage from "./pages/register";
 
 function App() {
   return (
@@ -96,10 +97,17 @@ function App() {
             />
           </Route>
         </Route>
+
         <Route
           path="login"
           element={
             <LoginPage />
+          }
+        />
+        <Route 
+          path="register"
+          element={
+            <RegisterPage />
           }
         />
 

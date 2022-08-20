@@ -1,12 +1,13 @@
 import DotMenu from "../../../components/DotMenu";
-import InitialBackhround from "../../../components/InitialBackground";
 import PropTypes from "prop-types";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
     ROUTER_PAGE_ENDPOINTS,
     routePageUrlBuilder,
     getBuildUrlByEndPoints,
 } from "../../../constants/urls";
+import { createAvatar } from '@dicebear/avatars';
+import * as style from '@dicebear/avatars-initials-sprites';
 
 const DOT_OPTIONS = {
     DELETE: 'delete',
@@ -31,6 +32,11 @@ const RecordCard = ({ id, name, background, onDelete }) => {
         }
     }
 
+    let SVG = createAvatar(style, {
+        seed: name,
+        backgroundColor: background,
+    });
+
     return (
         <div className="w-full h-48 lg:h-56 bg-white overflow-hidden border-2 border-totem-pole rounded-lg relative shadow-lg hover:shadow-xl">
             <Link
@@ -40,9 +46,9 @@ const RecordCard = ({ id, name, background, onDelete }) => {
                 <div className="w-full h-full bg-gray-50 hover:bg-gray-200">
                     <div className="h-4/5 w-full flex justify-center items-center">
                         <div className="overflow-hidden rounded-sm">
-                            <InitialBackhround 
-                                name={name}
-                                bgColor={background}
+                            <div
+                                className="w-24 h-24"
+                                dangerouslySetInnerHTML={{ __html: SVG }}
                             />
                         </div>
                     </div>
@@ -68,9 +74,8 @@ const RecordCard = ({ id, name, background, onDelete }) => {
 
 RecordCard.defaultProps = {
     name: '',
-    background: '',
     background: 'red',
-    onDelete: () => {},
+    onDelete: () => { },
 }
 
 RecordCard.propTypes = {
