@@ -64,8 +64,8 @@ const LoginPage = () => {
     }
 
     return (
-        <div className="flex items-center justify-center min-h-screen bg-gray-100">
-            <div className="px-8 py-6 mt-4 text-left bg-white shadow-lg border-t-8 border-b-8 border-totem-pole-500 rounded-md min-w-[28rem]">
+        <div className="flex items-center justify-center min-h-screen bg-gray-100 px-2">
+            <div className="px-8 py-6 mt-4 text-left bg-white shadow-lg border-t-8 border-b-8 border-totem-pole-500 rounded-md w-full sm:min-w-[28rem]">
                 <div className="flex justify-center">
                     <img src={niugan_logo} alt="niugan logo" className="w-16 h-16" />
                 </div>
