@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import MainLayout from "./layout";
 import PageLayout from "./layout/pages";
 import RecordDetail from "./pages/record/detail";
@@ -10,6 +10,12 @@ import { VerifyToken } from "./provider/authentication";
 import Page404 from "./pages/page404";
 import Response404Listener from "./provider/notfound";
 import RegisterPage from "./pages/register";
+
+import {
+  ROUTER_PAGE_ENDPOINTS,
+  routePageUrlBuilder,
+  getBuildUrlByEndPoints,
+} from "./constants/urls";
 
 function App() {
   return (
@@ -23,6 +29,18 @@ function App() {
         />
 
         <Route path="*" element={<MainLayout />}>
+          
+          {/* TEMPPORARY REDIRECT (ACT AS MAIN PAGE) */}
+          <Route 
+            path=""
+            element={
+              <Navigate 
+                to={getBuildUrlByEndPoints(routePageUrlBuilder, ROUTER_PAGE_ENDPOINTS.RECORD_LISTS_PAGE)}
+                replace
+              />
+            }
+          />
+
           <Route path="records">
 
             <Route path="detail">
