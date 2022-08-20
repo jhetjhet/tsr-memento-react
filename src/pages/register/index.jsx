@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import niugan_logo from "../../assets/images/niugan_logo.jpg";
+import niugan_logo from "../../assets/images/niugan_logo.png";
 import authFetch from "../../fetch/authentication";
 import {
     ROUTER_PAGE_ENDPOINTS,

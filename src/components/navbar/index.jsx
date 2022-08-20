@@ -1,4 +1,4 @@
-import niugan_logo from "../../assets/images/niugan_logo.jpg";
+import niugan_logo from "../../assets/images/niugan_logo.png";
 import PropTypes from "prop-types";
 import { useState } from "react";
 import authFetch from "../../fetch/authentication";
