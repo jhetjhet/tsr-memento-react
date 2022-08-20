@@ -67,7 +67,6 @@ const RegisterPage = () => {
 
     const __on_submit__ = (e) => {
         e.preventDefault();
-        setShowSuccess(true);
         setErrors({});
         async function fetchReq() {
             try {
